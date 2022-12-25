@@ -3,6 +3,7 @@ const lowerButton = document.getElementById('lower-case');
 const properButton = document.getElementById('proper-case');
 const sentenceButton = document.getElementById('sentence-case');
 const textArea = document.querySelector('textarea');
+const saveButton = document.getElementById('save-text-file');
 
 upperButton.addEventListener('click', () => {
     textArea.value =
@@ -27,6 +28,10 @@ sentenceButton.addEventListener('click', () => {
     textArea.value = getSentenceCase(text);
 });
 
+saveButton.addEventListener('click', () => {
+    download("hello.txt","This is the content of my file :)");
+});
+
 function getSentenceCase(str) {
     str = str.toLowerCase();
     return str.replace(
@@ -36,3 +41,19 @@ function getSentenceCase(str) {
         }
     );
 }
+
+function download(filename, text) {
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+// Start file download.
+download("hello.txt","This is the content of my file :)");
