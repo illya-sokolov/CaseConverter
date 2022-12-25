@@ -29,7 +29,7 @@ sentenceButton.addEventListener('click', () => {
 });
 
 saveButton.addEventListener('click', () => {
-    download("hello.txt","This is the content of my file :)");
+    download("text.txt",textArea.value);
 });
 
 function getSentenceCase(str) {
@@ -56,4 +56,4 @@ function download(filename, text) {
 }
 
 // Start file download.
-download("hello.txt","This is the content of my file :)");
+download("text.txt","This is the content of my file :)");
